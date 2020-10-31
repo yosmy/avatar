@@ -1,8 +1,8 @@
 <?php
 
-namespace Yosmy\Virtual\User;
+namespace Yosmy\Avatar;
 
-use Yosmy\Virtual\ManageUserCollection;
+use Yosmy\ManageAvatarCollection;
 
 /**
  * @di\service()
@@ -10,30 +10,30 @@ use Yosmy\Virtual\ManageUserCollection;
 class UpdateNickname
 {
     /**
-     * @var ManageUserCollection
+     * @var ManageAvatarCollection
      */
     private $manageCollection;
 
     /**
-     * @param ManageUserCollection $manageCollection
+     * @param ManageAvatarCollection $manageCollection
      */
     public function __construct(
-        ManageUserCollection $manageCollection
+        ManageAvatarCollection $manageCollection
     ) {
         $this->manageCollection = $manageCollection;
     }
 
     /**
-     * @param string $id
+     * @param string $user
      * @param string $nickname
      */
     public function update(
-        string $id,
+        string $user,
         string $nickname
     ) {
         $this->manageCollection->updateOne(
             [
-                '_id' => $id,
+                '_id' => $user,
             ],
             [
                 '$set' => [

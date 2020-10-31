@@ -1,13 +1,13 @@
 <?php
 
-namespace Yosmy\Virtual\User;
+namespace Yosmy\Avatar;
 
 use Yosmy\Http;
 
 /**
  * @di\service({private: true})
  */
-class ReduceAvatar
+class ReducePicture
 {
     /**
      * @var string
@@ -46,7 +46,7 @@ class ReduceAvatar
     public function reduce(
         string $image,
         string $width
-    ) {
+    ): string {
         [$type, $data] = explode(',', $image);
 
         $image = tempnam(sys_get_temp_dir(), 'avatar');

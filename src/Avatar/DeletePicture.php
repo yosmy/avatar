@@ -1,11 +1,11 @@
 <?php
 
-namespace Yosmy\Virtual\User;
+namespace Yosmy\Avatar;
 
 /**
  * @di\service()
  */
-class DeleteAvatar
+class DeletePicture
 {
     /**
      * @var string
@@ -14,7 +14,7 @@ class DeleteAvatar
 
     /**
      * @di\arguments({
-     *     dir: '%yosmy_virtual_user_avatar_dir%'
+     *     dir: '%avatar_dir%'
      * })
      *
      * @param string $dir
@@ -26,11 +26,11 @@ class DeleteAvatar
     }
 
     /**
-     * @param string $avatar
+     * @param string $picture
      */
     public function delete(
-        string $avatar
+        string $picture
     ) {
-        sprintf('%s/%s', $this->dir, $avatar);
+        unlink(sprintf('%s/%s', $this->dir, $picture));
     }
 }

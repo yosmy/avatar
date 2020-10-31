@@ -1,11 +1,13 @@
 <?php
 
-namespace Yosmy\Virtual\User;
+namespace Yosmy\Avatar;
 
 /**
- * @di\service()
+ * @di\service({
+ *     private: true
+ * })
  */
-class SaveAvatar
+class SavePicture
 {
     /**
      * @var string
@@ -14,7 +16,7 @@ class SaveAvatar
 
     /**
      * @di\arguments({
-     *     dir: '%yosmy_virtual_user_avatar_dir%'
+     *     dir: '%avatar_dir%'
      * })
      *
      * @param string $dir
@@ -26,22 +28,22 @@ class SaveAvatar
     }
 
     /**
-     * @param string $avatar
+     * @param string $picture
      *
      * @return string
      */
     public function save(
-        string $avatar
-    ) {
+        string $picture
+    ): string {
         // Remove type 'data:image/jpeg;base64'
-        $avatar = explode(',', $avatar);
-        $avatar = $avatar[1];
+        $picture = explode(',', $picture);
+        $picture = $picture[1];
 
-        $file = sprintf('%s.jpeg', md5($avatar));
+        $file = sprintf('%s.jpeg', md5($picture));
 
         file_put_contents(
             sprintf('%s/%s', $this->dir, $file),
-            base64_decode($avatar)
+            base64_decode($picture)
         );
 
         return $file;

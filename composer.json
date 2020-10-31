@@ -1,5 +1,5 @@
 {
-    "name": "yosmy/virtual-user",
+    "name": "yosmy/avatar",
     "license": "MIT",
     "authors": [
         {
@@ -9,12 +9,14 @@
     ],
     "require": {
         "php": ">=7.2",
+        "yosmy/audit": "@dev",
         "yosmy/mongo": "@dev",
+        "yosmy/password": "@dev",
         "yosmy/http": "@dev"
     },
     "autoload": {
         "psr-4": {
-            "Yosmy\\Virtual\\": [
+            "Yosmy\\": [
                 "src"
             ]
         }
